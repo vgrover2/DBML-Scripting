@@ -1,0 +1,298 @@
+Table "ACCESS_HIST"
+{
+
+    REQUEST_ID varbinary(18)
+    CLEAR_ID varbinary(18)
+    BADGE_ID varbinary(18)
+    ACTION nvarchar(512)
+    TRANS_DATE datetime
+    APPROVAL_ID varbinary(18)
+    APPROVAL_TYPE smallint
+}
+
+Table "ACCESS_PF"
+{
+
+    PAGE_NAME nvarchar(50) [pk]
+    TABLE_NAME nvarchar(50) [pk]
+    COLUMN_NAME nvarchar(50) [pk]
+    DISPLAY_NAME nvarchar(100)
+    X int
+    Y int
+    CX int
+    CY int
+    FIELD_TYPE tinyint
+    READ_ONLY tinyint
+    REQUIRED tinyint
+}
+
+Table "ACTIVITY_CODE_MSP"
+{
+
+    ACTIVITY_CODE int [pk]
+    DESCRP nvarchar(50)
+    AMOUNT money
+}
+
+Table "AL_PTS"
+{
+
+    ID nvarchar(64)
+    DESCRP nvarchar(40)
+    PTYPE nvarchar(50) [pk]
+    PPTYPE smallint [pk]
+    ADDR smallint [pk]
+    PRI smallint
+    ALTYP varbinary(18) [pk]
+    PT_NBR smallint
+    SRC_MSGTYPE nvarchar(12)
+    SRC_SUBMSGTYPE nvarchar(12)
+    SRC_MESSAGE nchar(12)
+    COMMENTS nvarchar(50)
+    RTN nchar(1)
+    TSTAMP timestamp
+    DESCRP_R nvarchar(47)
+}
+
+Table "AL_TYP"
+{
+
+    ID varbinary(18) [pk]
+    DESCRP nvarchar(40)
+    INSTR_TEXT nvarchar(254)
+    INSTR_TXT2 nvarchar(254)
+    SHUNT nchar(1)
+    PRIORITY smallint
+    REISSUE smallint
+    FORCE_NOTE nchar(1)
+    FORCE_NOTE_CLOSE nchar(1)
+    AUTO_CLEAR nchar(1)
+    RTN_SEP nchar(1)
+    AL_TXT_COL int
+    RT_TXT_COL int
+    SC_TXT_COL int
+    AL_BACK_COL int
+    RT_BACK_COL int
+    SC_BACK_COL int
+    FLASH_ALARM nchar(1)
+    WAVE_FIL nvarchar(260)
+    ALARM_PROC nchar(1)
+    EVENT_NOLOG nchar(1)
+    ACK_PASSWORD nvarchar(32)
+    RES_PASSWORD nvarchar(32)
+    WAV_FILE_REPEAT nchar(1)
+    WAV_REPEAT_FREQ int
+    ROLLOVER tinyint
+    ROLLOVER_MINUTES smallint
+    ROLLOVER_PROC varbinary(18)
+    ROLL_UP_EVENTS tinyint
+    TSTAMP timestamp
+    EXT_INSTR varbinary(18)
+    WF_ID varbinary(18)
+}
+
+Table "ALARM_PAGE_AP"
+{
+
+    ID varbinary(18) [pk]
+    DESCRP nvarchar(40)
+    INITSTAT nchar(1)
+    BKCOLOR nvarchar(64)
+    UNACK_FONT nvarchar(64)
+    ACK_FONT nvarchar(64)
+    UNACK_FONT_SIZE smallint
+    ACK_FONT_SIZE smallint
+    IS_MAP_PAGE tinyint
+    DEF_MAP varbinary(18)
+    TSTAMP timestamp
+    SYSTEM_PAGE tinyint
+}
+
+Table "ALARM_PAGE_PA"
+{
+
+    ID varbinary(18) [pk]
+    ALTYP_ID varbinary(18) [pk]
+    ACK nchar(1)
+    CLR nchar(1)
+    TSTAMP timestamp
+}
+
+Table "ALARM_PAGE_PC"
+{
+
+    ID varbinary(18) [pk]
+    COL_ID int [pk]
+    COL_WIDTH int
+    COL_SEQ int
+    COL_TEXT nvarchar(50)
+    TSTAMP timestamp
+}
+
+Table "AP_STATE_HEADER"
+{
+
+    STATE_NAME nvarchar(10)
+    DESCRP nvarchar(50)
+    STATE_IDX tinyint
+}
+
+Table "APP_MODULE_OUTBOUND_LIST"
+{
+
+    APP_MOD_ID varbinary(18) [pk]
+    OBJECT_ID varbinary(18) [pk]
+    OBJECT_TYP nvarchar(40)
+    TSTAMP timestamp
+}
+
+Table "APPLICATION_MODULE_ACTION"
+{
+
+    ID varbinary(18) [pk]
+    PUB_OBJ_ID varbinary(18)
+    ACTION_NAME nvarchar(32)
+    ACTION_URL nvarchar(1024)
+    IN_CONTRACT nvarchar(200)
+    TSTAMP timestamp
+    ACTION_STATE smallint
+}
+
+Table "APPLICATION_MODULE_PUB_OBJ"
+{
+
+    ID varbinary(18) [pk]
+    APP_MOD_ID varbinary(18)
+    NAME nvarchar(40)
+    URI nvarchar(1024)
+    DESCRP nvarchar(40)
+    BACNET_CATEGORY smallint
+    HARDWARE_TYPE smallint
+    IS_SUBSCRIBED nchar(1)
+    VALUE nvarchar(40)
+    TSTAMP timestamp
+}
+
+Table "APPLICATION_MODULE_PUB_PROPERTY"
+{
+
+    ID varbinary(18) [pk]
+    PUB_OBJ_ID varbinary(18)
+    NAME nvarchar(40)
+    TYPE smallint
+    VALUE nvarchar(50)
+    RANGE nvarchar(1024)
+    IS_WRITABLE smallint
+    TSTAMP timestamp
+}
+
+Table "APPLICATION_MODULE_ACTION_PARAM"
+{
+
+    ID varbinary(18) [pk]
+    PUB_OBJ_ID varbinary(18)
+    ACTION_ID varbinary(18)
+    PARAM_NAME nvarchar(32)
+    PARAM_TYPE int
+    PARAM_INDEX int
+    RANGE nvarchar(1024)
+    CURRENT_VALUE nvarchar(50)
+    TSTAMP timestamp
+}
+
+Table "APPLICATION_MODULE_LOGDEV_MAP"
+{
+
+    PUB_OBJ_ID varbinary(18) [pk]
+    LOG_DEV_ID varbinary(18)
+    HARDWARE_ID nvarchar(64)
+    TSTAMP timestamp
+}
+
+Table "APPLICATION_MODULE_AREA_MAP"
+{
+
+    PUB_OBJ_ID varbinary(18) [pk]
+    AREA_ID varbinary(18)
+    TSTAMP timestamp
+}
+
+Table "BADGE_PROF"
+{
+
+    ID varbinary(18) [pk]
+    DESCRP nvarchar(40)
+    NUM_PAGES int
+    ACCESS_PAGE nchar(1)
+    TSTAMP timestamp
+    PARTITION_PAGE nchar(1)
+    BRASS_KEY_PAGE nchar(1)
+    AUTO_DISABLE_DAYS smallint
+    BLOB_PAGE nchar(1)
+    PERMIT_PAGE nchar(1)
+    CARD_PIN_REQ nchar(1)
+    COPY_PIN_CODE nchar(1)
+    COPY_BIO_PIN_CODE nchar(1)
+    PIN_CODE_LEN smallint
+    PIN_CODE_RETRY nchar(1)
+    APPROVAL_PAGE nchar(1)
+    BP_FILTER nvarchar(512)
+    RUN_VALIDATION_SP nchar(1)
+    VALIDATION_SP nvarchar(64)
+    RUN_PRINT_SP nchar(1)
+    PRINT_SP nvarchar(64)
+    RUN_PII nchar(1)
+    NEW_CARD_STATUS nchar(1)
+    CHANNELING_PAGE nchar(1)
+    NOTE_PAGE nchar(1)
+    BILLING_PAGE nchar(1)
+    SURVEY nchar(1)
+    NEW_BADGE_WIZ nchar(1)
+    CERTIFICATION_PAGE nchar(1)
+    ONE_ACTIVE_CARD nchar(1)
+    VIOLATION_PAGE nchar(1)
+}
+
+Table "BADGE_FIELDS"
+{
+
+    COLUMN_NAME nvarchar(256) [pk]
+    DISPLAY_NAME nvarchar(256)
+    USER_DEFINED tinyint
+    FIELD_TYPE int
+    STD_FIELD_SIZE int
+    FOREIGN_TABLE nvarchar(256)
+    FOREIGN_KEY nvarchar(256)
+    RESOURCE_TYPE int
+    BLOB_TYPE varbinary(18)
+    AUTO_INCREMENT_START money
+    AUTO_INCREMENT_CURRENT money
+    IS_SELECTABLE tinyint
+    IS_QUICK_SEARCHABLE tinyint
+    INDEX_COLUMN tinyint
+    UNIQUE_COLUMN tinyint
+    BLOB_TEXT tinyint
+    TSTAMP timestamp
+    ALLOW_NULLS tinyint
+    IS_WORDWRAP tinyint
+}
+
+Table "BADGE_PROF_FIELDS_DEFAULTS"
+{
+
+    COLUMN_NAME nvarchar(256) [pk]
+    BADGE_PROF_ID varbinary(18) [pk]
+    DEFAULT_DATETIME datetime
+    DEFAULT_INT int
+    DEFAULT_NVARCHAR nvarchar(1000)
+    TSTAMP timestamp
+    DEFAULT_MONEY money
+}
+
+Ref: "APPLICATION_MODULE_ACTION".(PUB_OBJ_ID) > "APPLICATION_MODULE_PUB_OBJ".(ID)
+Ref: "APPLICATION_MODULE_PUB_PROPERTY".(PUB_OBJ_ID) > "APPLICATION_MODULE_PUB_OBJ".(ID)
+Ref: "APPLICATION_MODULE_ACTION_PARAM".(ACTION_ID) > "APPLICATION_MODULE_ACTION".(ID)
+Ref: "APPLICATION_MODULE_LOGDEV_MAP".(PUB_OBJ_ID) > "APPLICATION_MODULE_PUB_OBJ".(ID)
+Ref: "APPLICATION_MODULE_AREA_MAP".(PUB_OBJ_ID) > "APPLICATION_MODULE_PUB_OBJ".(ID)
+Ref: "BADGE_PROF_FIELDS_DEFAULTS".(BADGE_PROF_ID) > "BADGE_PROF".(ID)
+Ref: "BADGE_PROF_FIELDS_DEFAULTS".(COLUMN_NAME) > "BADGE_FIELDS".(COLUMN_NAME)

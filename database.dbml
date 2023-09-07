@@ -1,0 +1,87 @@
+Project Pacom {
+    database_type: 'PostgreSQL'
+    Note: '''
+
+    # Pacom Database
+
+    '''
+
+}
+
+Table Address{
+  SeqNo int [primary key]
+  LastName varchar [not null]
+  FirstName varchar
+  MiddleName varchar
+  DOB int
+  PersonalID varchar [not null]
+  Title int
+  Dept int
+  Street varchar
+  City varchar
+  State varchar
+  Zip varchar
+  HomePhone varchar
+  OfficePhone varchar
+  PhoneExt varchar
+  MobilePhone varchar
+  Email varchar
+  UserField1 varchar
+  UserField2 varchar
+  FileName1 varchar
+  FileName2 varchar
+  FileName3 varchar
+}
+
+Table AlmPointStatistic{
+  SeqNo int [primary key]
+  EventNo int [not null]
+  A1A2 int
+  D2 tinyint
+  AlmGroup tinyint 
+  FC tinyint [not null]
+  Policed tinyint 
+}
+
+Table AlmGrps{
+  MsgNo int [primary key]
+  MsgText varchar
+}
+
+Table LogData{
+  SeqNo int [primary key]
+  WD tinyint
+  YMD int
+  HMS int
+  UserNo1 tinyint
+  FC tinyint [not null]
+  A1A2 int
+  Port tinyint
+  D1 tinyint
+  D2 tinyint
+  D3 tinyint
+  D4 tinyint
+  D5 tinyint
+  D6 tinyint
+  D7 tinyint
+  D8 tinyint
+  D9 tinyint
+  D10 tinyint
+  D11 tinyint
+  ConsoleNo tinyint
+  EventNo int
+  User1 tinyint
+  User2 tinyint
+  Spare tinyint
+  D12_15 int
+  D16_17 int 
+}
+
+Table LogSequence {
+  SeqNo int [primary key]
+  YMD int [not null, unique]
+}
+
+Ref {
+  LogSequence.YMD > LogData.YMD
+}
